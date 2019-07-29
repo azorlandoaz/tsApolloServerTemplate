@@ -1,0 +1,5 @@
+{
+  "undefined": "<mongo connection string for none NODE_ENV value>",
+  "development": "<mongo connection string for none development environment>",
+  "production": "<mongo connection string for production development environment>",
+}

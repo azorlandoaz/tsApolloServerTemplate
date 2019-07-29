@@ -1,0 +1,42 @@
+# Define here your query/mutation fields
+# The types found here are just examples.
+
+type Mutation {
+  createUser(
+    username: String!
+    password: String!
+    names: String!
+    firstLastName: String!
+    secondLastName: String!
+    phone: String
+    position: String
+    functionalObjectives: [FunctionalObjectiveInput]
+    isAdmin: Boolean
+    tenantId: String!
+    status: Status
+  ): User
+
+  updateUser(
+    id: ID!
+    username: String
+    password: String
+    names: String
+    firstLastName: String
+    secondLastName: String
+    phone: String
+    position: String
+    functionalObjectives: [FunctionalObjectiveInput]
+    isAdmin: Boolean
+    tenantId: String
+    status: Status
+  ): User
+}
+
+type Query {
+  getUsersPaginated(status: Status, page: Int): UserResponse
+  getUserByArrayId(arrayIds: [ID!]): [User]
+  getUserById(id: ID!): User
+  getUserByUserName(username: String!): User
+  getUserByUserNameAndPassword(username: String!, password: String!): User
+  AllUsers: [User]
+}

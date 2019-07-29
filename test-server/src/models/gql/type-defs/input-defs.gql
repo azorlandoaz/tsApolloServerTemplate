@@ -1,0 +1,11 @@
+# Define here your Input GQL Types
+# The types found here are just examples.
+
+input PermissionInput {
+  function: String!
+}
+
+input FunctionalObjectiveInput {
+  name: String!
+  permissions: [PermissionInput]
+}

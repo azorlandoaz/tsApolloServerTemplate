@@ -1,0 +1,32 @@
+# Use the version > 2.1 < 3.* for assign statics ips
+version: '2.4'
+# Last version release
+# version: '3.7'
+
+networks:
+  intranet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 10.0.0.0/24
+        gateway: 10.0.0.1
+
+services:
+  api-server:
+    build: ./api-server
+    # watch the .js, .gql, .json, .ts files changes once the change is detected run build-ts and server scripts
+    command: ./node_modules/.bin/nodemon -e js,gql,json,ts --watch src -x 'npm run build-ts && npm run serve' -L
+    # generate a bind through the local folder and the container folder respectly
+    volumes:
+      - ./api-server:/app/api-server
+      # - app/correspondence-server/
+    ports:
+      - "4000:4000"
+    # works on v 2.*
+    networks:
+      intranet:
+        ipv4_address: 10.0.0.2
+    # works on v 3.*
+    # networks:
+    #  - intranet:

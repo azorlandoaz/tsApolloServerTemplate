@@ -1,0 +1,37 @@
+# Define here your GQL types
+# The types found here are just examples.
+
+type Permission {
+  function: String!
+}
+
+type FunctionalObjective {
+  name: String!
+  permissions: [Permission]
+}
+
+type User {
+  id: ID!
+  email: String!
+  username: String!
+  names: String!
+  firstLastName: String!
+  secondLastName: String!
+  position: String
+  phone: String
+  functionalObjectives: [FunctionalObjective]
+  isAdmin: Boolean
+  status: Status
+  tenantId: String
+  updateBy: ID
+  createdAt: String
+  updatedAt: String
+}
+
+type UserResponse {
+  total: Int
+  pages: Int
+  page: Int
+  items: Int
+  users: [User]
+}
